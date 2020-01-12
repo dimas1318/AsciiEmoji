@@ -16,8 +16,8 @@ import java.util.*
  */
 class EmojiRepository {
 
-    fun getAllEmojies(context: Context): Single<Any>? {
-        return Single.fromCallable<Any> {
+    fun getAllEmojies(context: Context): Single<List<Emoji>> {
+        return Single.fromCallable<List<Emoji>> {
             val result: MutableList<Emoji> = ArrayList()
             try {
                 val obj = JSONObject(loadJSONFromAsset(context))
