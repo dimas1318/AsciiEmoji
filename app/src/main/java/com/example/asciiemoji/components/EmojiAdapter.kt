@@ -11,7 +11,11 @@ import com.example.asciiemoji.model.Emoji
  */
 class EmojiAdapter(val listener: OnEmojiClickListener) : RecyclerView.Adapter<EmojiViewHolder>() {
 
-    private var mEmojies: List<Emoji> = mutableListOf()
+    var mEmojies = listOf<Emoji>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,9 +34,4 @@ class EmojiAdapter(val listener: OnEmojiClickListener) : RecyclerView.Adapter<Em
     }
 
     override fun getItemCount() = mEmojies.size
-
-    fun setDate(emojies: List<Emoji>?) {
-        mEmojies = emojies?.toList() ?: emptyList()
-        notifyDataSetChanged()
-    }
 }

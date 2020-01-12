@@ -1,6 +1,7 @@
 package com.example.asciiemoji
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.asciiemoji.model.Emoji
@@ -12,8 +13,13 @@ import io.reactivex.observers.DisposableSingleObserver
  */
 class EmojiViewModel : ViewModel() {
 
-    private val mEmojies: MutableLiveData<List<Emoji>> = MutableLiveData()
-    private val mError: MutableLiveData<String> = MutableLiveData()
+    private val _mEmojies: MutableLiveData<List<Emoji>> = MutableLiveData()
+    val emojies: LiveData<List<Emoji>>
+        get() = _mEmojies
+
+    private val _mError: MutableLiveData<String> = MutableLiveData()
+    val error: LiveData<String>
+        get() = _mError
 
     private val mRepository: EmojiRepository = EmojiRepository()
 
@@ -22,11 +28,11 @@ class EmojiViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : DisposableSingleObserver<List<Emoji>>() {
                 override fun onSuccess(emojies: List<Emoji>) {
-                    mEmojies.postValue(emojies)
+                    _mEmojies.postValue(emojies)
                 }
 
                 override fun onError(e: Throwable) {
-                    mError.postValue(e.localizedMessage)
+                    _mError.postValue(e.localizedMessage)
                 }
             })
     }
