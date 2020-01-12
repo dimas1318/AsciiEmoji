@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/surfaceColor"
+    android:elevation="@dimen/elevation_1dp">
+
+    <com.example.asciiemoji.SquareFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:textSize="14sp"
+            tools:text="emoji" />
+
+        <TextView
+            android:id="@+id/emoji_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/margin_8dp"
+            android:textColor="?attr/onSurfaceColor"
+            android:textSize="40sp"
+            tools:text="ツ" />
+
+    </com.example.asciiemoji.SquareFrameLayout>
+
+</androidx.cardview.widget.CardView>
