@@ -9,7 +9,6 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.nio.charset.StandardCharsets
-import java.util.*
 
 /**
  * Created by Dmitry Parshin on 12.01.2020.
@@ -18,7 +17,7 @@ class EmojiRepository {
 
     fun getAllEmojies(context: Context): Single<List<Emoji>> {
         return Single.fromCallable<List<Emoji>> {
-            val result: MutableList<Emoji> = ArrayList()
+            val result: MutableList<Emoji> = mutableListOf()
             try {
                 val obj = JSONObject(loadJSONFromAsset(context))
                 val emojies: JSONArray = obj.getJSONArray(EMOJIES_TAG)
