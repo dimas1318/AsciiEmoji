@@ -99,6 +99,6 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
 
     private companion object {
         const val PREF_NAME = "SP_Emoji"
-        val NIGHT_MODE_KEY = "night_mode"
+        const val NIGHT_MODE_KEY = "night_mode"
     }
 }
