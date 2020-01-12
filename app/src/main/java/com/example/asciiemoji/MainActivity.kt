@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
     private lateinit var mViewModel: EmojiViewModel
 
     private lateinit var mAdapter: EmojiAdapter
-    
+
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
