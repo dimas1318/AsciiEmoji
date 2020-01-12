@@ -22,13 +22,14 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
     private lateinit var mViewModel: EmojiViewModel
 
     private lateinit var mAdapter: EmojiAdapter
-
-    private val sharedPref: SharedPreferences =
-        getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sharedPref = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
         val nightModeEnabled = sharedPref.getBoolean(NIGHT_MODE_KEY, false)
         AppCompatDelegate.setDefaultNightMode(
