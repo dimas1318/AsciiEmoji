@@ -3,6 +3,7 @@ package com.example.asciiemoji
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -22,9 +23,21 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
 
     private lateinit var mAdapter: EmojiAdapter
 
+    private val sharedPref: SharedPreferences =
+        getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val nightModeEnabled = sharedPref.getBoolean(NIGHT_MODE_KEY, false)
+        AppCompatDelegate.setDefaultNightMode(
+            if (nightModeEnabled) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+        )
 
         initViews()
 
@@ -45,8 +58,10 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
             val currentMode: Int = AppCompatDelegate.getDefaultNightMode()
             if (currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPref.edit().putBoolean(NIGHT_MODE_KEY, false).apply()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPref.edit().putBoolean(NIGHT_MODE_KEY, true).apply()
             }
             delegate.applyDayNight()
             return true
@@ -79,5 +94,10 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
     private fun processError(error: String?) {
         val text = error ?: getString(R.string.unknown_error)
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    }
+
+    private companion object {
+        const val PREF_NAME = "SP_Emoji"
+        val NIGHT_MODE_KEY = "night_mode"
     }
 }
