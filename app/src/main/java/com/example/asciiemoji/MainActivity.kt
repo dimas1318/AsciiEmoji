@@ -20,22 +20,19 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
 
     private lateinit var mViewModel: EmojiViewModel
 
+    private lateinit var mAdapter: EmojiAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initViews()
+
         mViewModel = ViewModelProviders.of(this).get(EmojiViewModel::class.java)
 
-        emoji_recycler_view.addItemDecoration(GridItemDecoration(this, R.dimen.margin_8dp))
+        setupObservers()
 
-        val adapter = EmojiAdapter(this)
-        emoji_recycler_view.adapter = adapter
-
-        mViewModel.emojies.observe(this, Observer {
-            adapter.mEmojies = it
-        })
-
-        mViewModel.error.observe(this, Observer { processError(it) })
+        mViewModel.loadEmojies(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,6 +59,21 @@ class MainActivity : AppCompatActivity(), OnEmojiClickListener {
         clipboard.primaryClip = ClipData.newPlainText(null, emoji.emoji)
 
         Toast.makeText(this, R.string.copy_notification, Toast.LENGTH_LONG).show()
+    }
+
+    private fun initViews() {
+        emoji_recycler_view.addItemDecoration(GridItemDecoration(this, R.dimen.margin_8dp))
+
+        mAdapter = EmojiAdapter(this)
+        emoji_recycler_view.adapter = mAdapter
+    }
+
+    private fun setupObservers() {
+        mViewModel.emojies.observe(this, Observer {
+            mAdapter.mEmojies = it
+        })
+
+        mViewModel.error.observe(this, Observer { processError(it) })
     }
 
     private fun processError(error: String?) {

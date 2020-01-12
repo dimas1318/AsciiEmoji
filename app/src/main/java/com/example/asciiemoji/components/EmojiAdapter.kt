@@ -9,7 +9,8 @@ import com.example.asciiemoji.model.Emoji
 /**
  * Created by Dmitry Parshin on 12.01.2020.
  */
-class EmojiAdapter(val listener: OnEmojiClickListener) : RecyclerView.Adapter<EmojiViewHolder>() {
+class EmojiAdapter(private val listener: OnEmojiClickListener) :
+    RecyclerView.Adapter<EmojiViewHolder>() {
 
     var mEmojies = listOf<Emoji>()
         set(value) {
