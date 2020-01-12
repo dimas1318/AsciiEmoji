@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+
+        <item name="colorPrimary">@color/colorToolbar_Night</item>
+        <item name="colorPrimaryDark">@color/colorBackground_Night</item>
+
+        <item name="backgroundColor">@color/colorBackground_Night</item>
+        <item name="surfaceColor">@color/colorSurface_Night</item>
+        <item name="errorColor">@color/colorError_Night</item>
+        <item name="onPrimaryColor">@color/colorOnPrimary_Night</item>
+        <item name="onSecondaryColor">@color/colorOnSecondary_Night</item>
+        <item name="onBackgroundColor">@color/colorOnBackground_Night</item>
+        <item name="onSurfaceColor">@color/colorOnSurface_Night</item>
+        <item name="onErrorColor">@color/colorOnError_Night</item>
+
+        <item name="nightModeMenuItemIcon">@drawable/ic_brightness_7_white_24dp</item>
+
+    </style>
+
+</resources>

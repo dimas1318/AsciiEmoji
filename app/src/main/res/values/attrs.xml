@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="backgroundColor" format="reference" />
+    <attr name="surfaceColor" format="reference" />
+    <attr name="errorColor" format="reference" />
+    <attr name="onPrimaryColor" format="reference" />
+    <attr name="onSecondaryColor" format="reference" />
+    <attr name="onBackgroundColor" format="reference" />
+    <attr name="onSurfaceColor" format="reference" />
+    <attr name="onErrorColor" format="reference" />
+
+    <attr name="nightModeMenuItemIcon" format="reference" />
+
+</resources>

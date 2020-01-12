@@ -1,11 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="surfaceColor">@color/colorSurface</item>
+        <item name="errorColor">@color/colorError</item>
+        <item name="onPrimaryColor">@color/colorOnPrimary</item>
+        <item name="onSecondaryColor">@color/colorOnSecondary</item>
+        <item name="onBackgroundColor">@color/colorOnBackground</item>
+        <item name="onSurfaceColor">@color/colorOnSurface</item>
+        <item name="onErrorColor">@color/colorOnError</item>
+
+        <item name="nightModeMenuItemIcon">@drawable/ic_brightness_4_black_24dp</item>
+
     </style>
 
 </resources>
